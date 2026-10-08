@@ -1,0 +1,213 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Módulos In Company</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800;900&display=swap">
+<style>
+  :root {
+    --roxo: #3D2A8A;
+    --roxo-light: #5640b0;
+    --amarelo: #F5B800;
+    --teal: #12B2C8;
+    --bg: #f6f4fc;
+    --card: #ffffff;
+    --text: #1a1530;
+    --muted: #6b6080;
+    --border: #e0d9f5;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #100d1f; --card: #1c1636; --text: #f0ecff; --muted: #9e93c8; --border: #2d2550;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] { --bg: #100d1f; --card: #1c1636; --text: #f0ecff; --muted: #9e93c8; --border: #2d2550; color-scheme: dark; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Exo 2', sans-serif; background: var(--bg); color: var(--text); padding: 24px 16px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(61,42,138,0.08);
+    border: 1px solid var(--border);
+  }
+  thead tr { background: var(--roxo); }
+  thead th {
+    padding: 12px 16px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: rgba(255,255,255,0.9);
+    text-align: left;
+  }
+  thead th:nth-child(2), thead th:nth-child(3), thead th:nth-child(4) { text-align: center; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(61,42,138,0.04); }
+
+  td { padding: 11px 16px; vertical-align: middle; }
+
+  .mod-num {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.9);
+    background: var(--roxo);
+    border-radius: 5px;
+    padding: 2px 7px;
+    display: inline-block;
+  }
+  .mod-name { font-size: 0.84rem; font-weight: 600; color: var(--text); }
+
+  .badge {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 3px 9px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-align: center;
+    width: 100%;
+    max-width: 70px;
+    margin: 0 auto;
+    display: block;
+  }
+  .badge-h { background: rgba(61,42,138,0.1); color: var(--roxo); }
+  .badge-p { background: rgba(18,178,200,0.12); color: var(--text); }
+
+  .name-cell { display: flex; align-items: center; gap: 10px; }
+
+  /* Checkbox */
+  .cb-wrap { display: flex; justify-content: center; }
+  .cb {
+    width: 20px; height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--bg);
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+  .cb:checked {
+    background: var(--roxo);
+    border-color: var(--roxo);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  tbody tr.checked-row { background: rgba(61,42,138,0.05); }
+
+  tfoot tr { background: rgba(245,184,0,0.08); border-top: 2px solid var(--amarelo); }
+  tfoot td { padding: 11px 16px; font-size: 0.82rem; font-weight: 800; color: var(--text); }
+  tfoot .badge { background: var(--amarelo); color: #2a1d61; }
+
+  /* Summary bar */
+  .summary-bar {
+    margin-top: 14px;
+    padding: 13px 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 0.84rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(61,42,138,0.06);
+  }
+  .summary-bar .label { color: var(--muted); font-weight: 600; font-size: 0.78rem; }
+  .summary-bar .val { font-size: 1.1rem; font-weight: 900; }
+  .summary-bar .val.roxo { color: var(--roxo); }
+  .summary-bar .val.teal { color: var(--teal); }
+  .summary-bar .sep { width: 1px; height: 28px; background: var(--border); }
+  .no-sel { color: var(--muted); font-size: 0.82rem; font-weight: 600; }
+</style>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:44px"></th>
+      <th>Módulo</th>
+      <th style="width:80px">Horas/Aula</th>
+      <th style="width:80px">Pontos PEC</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+  <tfoot>
+    <tr>
+      <td></td>
+      <td>Total (todos os módulos)</td>
+      <td><span class="badge badge-h">54h/a</span></td>
+      <td><span class="badge badge-p" style="color:var(--text)">25 pts</span></td>
+    </tr>
+  </tfoot>
+</table>
+
+<div class="summary-bar" id="summaryBar">
+  <span class="no-sel">Selecione módulos para calcular o total</span>
+</div>
+
+<script>
+const MODS = [
+  {id:1, name:'Aspectos Conceituais e de Governança', h:9},
+  {id:2, name:'Aspectos Jurídicos', h:4},
+  {id:3, name:'Aspectos Atuariais', h:6},
+  {id:4, name:'Aspectos de Investimentos', h:6},
+  {id:5, name:'Aspectos Administrativos e de Supervisão', h:4},
+  {id:6, name:'Aspectos Contábeis', h:6},
+  {id:7, name:'Aspectos Estratégicos', h:3},
+  {id:8, name:'Gestão Baseada em Dados', h:4},
+  {id:9, name:'Comunicação Estratégica nas Entidades de Previdência', h:3},
+  {id:10, name:'Habilidades de Liderança Estratégica para Entidades de Previdência', h:9},
+];
+
+const tbody = document.getElementById('tbody');
+let totalH = 0, totalP = 0;
+MODS.forEach(m => {
+  const pec = Math.floor(m.h / 2);
+  totalH += m.h; totalP += pec;
+  tbody.innerHTML += `<tr data-h="${m.h}" data-pec="${pec}">
+    <td><div class="cb-wrap"><input type="checkbox" class="cb" onchange="update()"></div></td>
+    <td><div class="name-cell"><span class="mod-name">${m.name}</span></div></td>
+    <td><span class="badge badge-h">${m.h}h/a</span></td>
+    <td><span class="badge badge-p" style="color:var(--text)">${pec} pts</span></td>
+  </tr>`;
+});
+function update() {
+  const rows = document.querySelectorAll('tbody tr');
+  let h = 0, p = 0, count = 0;
+  rows.forEach(r => {
+    const cb = r.querySelector('.cb');
+    if (cb.checked) {
+      h += +r.dataset.h; p += +r.dataset.pec; count++;
+      r.classList.add('checked-row');
+    } else {
+      r.classList.remove('checked-row');
+    }
+  });
+  const bar = document.getElementById('summaryBar');
+  if (count === 0) {
+    bar.innerHTML = '<span class="no-sel">Selecione módulos para calcular o total</span>';
+  } else {
+    bar.innerHTML = `
+      <div><div class="label">Módulos</div><div class="val roxo">${count}</div></div>
+      <div class="sep"></div>
+      <div><div class="label">Horas/Aula</div><div class="val roxo">${h}h/a</div></div>
+      <div class="sep"></div>
+      <div><div class="label">Pontos PEC</div><div class="val teal">${p} pts</div></div>
+    `;
+  }
+}
+</script>
+
+</body></html>
